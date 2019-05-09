@@ -55,7 +55,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        new FetchData().execute();
+
+
+        //new FetchData().execute();
         listData = new ArrayList<>(Arrays.asList(mountainNames));
         adapter = new ArrayAdapter<Mountain>(this, R.layout.list_item_view, R.id.list_item_textview);
 
@@ -99,11 +101,14 @@ public class MainActivity extends AppCompatActivity {
             BufferedReader reader = null;
 
             // Will contain the raw JSON response as a Java string.
-            String jsonStr = null;
+            String forecastJsonStr = null;
+
+            Log.d("error fel här", "Fel här");
 
             try {
                 // Construct the URL for the Internet service
                 URL url = new URL("http://wwwlab.iit.his.se/brom/kurser/mobilprog/dbservice/admin/getdataasjson.php?type=brom");
+
 
                 // Create the request to the PHP-service, and open the connection
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -115,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
                 StringBuffer buffer = new StringBuffer();
                 if (inputStream == null) {
                     // Nothing to do.
+
                     return null;
                 }
                 reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -131,8 +137,8 @@ public class MainActivity extends AppCompatActivity {
                     // Stream was empty.  No point in parsing.
                     return null;
                 }
-                jsonStr = buffer.toString();
-                return jsonStr;
+                forecastJsonStr = buffer.toString();
+                return forecastJsonStr;
             } catch (IOException e) {
                 Log.e("PlaceholderFragment", "Error ", e);
                 // If the code didn't successfully get the weather data, there's no point in
