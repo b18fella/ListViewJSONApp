@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">b18fella - assignment 4</string>
+    <string name="action_refresh">Refresh</string>
 </resources>
