@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //new FetchData().execute();
+        new FetchData().execute();
         listData = new ArrayList<>(Arrays.asList(mountainNames));
         adapter = new ArrayAdapter<Mountain>(this, R.layout.list_item_view, R.id.list_item_textview);
 
@@ -103,13 +103,13 @@ public class MainActivity extends AppCompatActivity {
             // Will contain the raw JSON response as a Java string.
             String forecastJsonStr = null;
 
-            Log.d("error fel här", "Fel här");
+
 
             try {
                 // Construct the URL for the Internet service
                 URL url = new URL("http://wwwlab.iit.his.se/brom/kurser/mobilprog/dbservice/admin/getdataasjson.php?type=brom");
 
-
+                Log.d("error fel här", "Fel här");
                 // Create the request to the PHP-service, and open the connection
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
